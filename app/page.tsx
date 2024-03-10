@@ -1,112 +1,56 @@
-import Image from "next/image";
+import React from "react";
+import { ChartComponent } from "./components/chart";
 
-export default function Home() {
+const initialData = [
+  { time: "2018-12-22", value: 32.51 },
+  { time: "2018-12-23", value: 31.11 },
+  { time: "2018-12-24", value: 27.02 },
+  { time: "2018-12-25", value: 27.32 },
+  { time: "2018-12-26", value: 25.17 },
+  { time: "2018-12-27", value: 28.89 },
+  { time: "2018-12-28", value: 25.46 },
+  { time: "2018-12-29", value: 23.92 },
+  { time: "2018-12-30", value: 22.68 },
+  { time: "2018-12-31", value: 22.67 },
+];
+
+export default function Home(props: any) {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className="flex min-h-screen flex-col items-center justify-center p-24 h-14 bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+      <div className="w-full flex-col justify-center items-center text-center">
+        <div className="logo text-white text-4xl font-bold text-center flex-col mx-auto gap-4">
+          <span className="inline-block">
+            <svg
+              width="36"
+              height="28"
+              viewBox="0 0 36 28"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M14 22H7V11H0V4h14v18zM28 22h-8l7.5-18h8L28 22z"
+                fill="currentColor"
+              ></path>
+              <circle cx="20" cy="8" r="4" fill="currentColor"></circle>
+            </svg>
+          </span>
+          <span className="inline-block">
+            <svg
+              width="147"
+              height="28"
+              viewBox="0 0 147 28"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.793 22.024h3.702V7.519h4.843V4.02H0v3.5h4.793v14.504zM13.343 22.024h3.474v-6.06c0-2.105 1.09-3.373 2.74-3.373.582 0 1.039.101 1.571.279V9.345a3.886 3.886 0 00-1.166-.152c-1.42 0-2.713.938-3.145 2.18V9.346h-3.474v12.679zM27.796 22.303c1.75 0 3.068-.888 3.652-1.7v1.42h3.474V9.346h-3.474v1.42c-.584-.811-1.902-1.699-3.652-1.699-3.372 0-5.959 3.043-5.959 6.618 0 3.576 2.587 6.619 5.96 6.619zm.736-3.17c-1.928 0-3.196-1.445-3.196-3.448 0-2.004 1.268-3.45 3.196-3.45 1.927 0 3.195 1.446 3.195 3.45 0 2.003-1.268 3.448-3.195 3.448zM43.193 22.303c1.75 0 3.068-.888 3.651-1.7v1.42h3.474V3.007h-3.474v7.76c-.583-.812-1.901-1.7-3.651-1.7-3.373 0-5.96 3.043-5.96 6.618 0 3.576 2.587 6.619 5.96 6.619zm.735-3.17c-1.927 0-3.195-1.445-3.195-3.448 0-2.004 1.268-3.45 3.195-3.45 1.927 0 3.195 1.446 3.195 3.45 0 2.003-1.268 3.448-3.195 3.448zM55.166 7.412a2.213 2.213 0 002.232-2.206A2.213 2.213 0 0055.166 3a2.224 2.224 0 00-2.206 2.206 2.224 2.224 0 002.206 2.206zm-1.724 14.612h3.474V9.49h-3.474v12.533zM59.998 22.024h3.474v-6.187c0-2.435 1.192-3.601 2.815-3.601 1.445 0 2.232 1.116 2.232 2.941v6.847h3.474v-7.43c0-3.296-1.826-5.528-4.894-5.528-1.649 0-2.942.71-3.627 1.724V9.345h-3.474v12.679zM80.833 18.65c-1.75 0-3.22-1.319-3.22-3.246 0-1.952 1.47-3.246 3.22-3.246 1.75 0 3.22 1.294 3.22 3.246 0 1.927-1.47 3.246-3.22 3.246zm-.406 8.85c3.88 0 6.822-1.978 6.822-6.543V9.268h-3.474v1.42C83.09 9.7 81.72 8.99 80.098 8.99c-3.322 0-5.985 2.84-5.985 6.415 0 3.55 2.663 6.39 5.985 6.39 1.623 0 2.992-.735 3.677-1.673v.862c0 2.029-1.344 3.474-3.398 3.474-1.42 0-2.84-.482-3.956-1.572l-1.902 2.586c1.445 1.395 3.702 2.029 5.908 2.029zM94.594 22.024h3.27L105.32 4.02h-4.057l-5.021 12.501L91.145 4.02h-3.981l7.43 18.004zM108.508 7.266a2.213 2.213 0 002.231-2.206 2.213 2.213 0 00-2.231-2.206c-1.192 0-2.207.988-2.207 2.206 0 1.217 1.015 2.206 2.207 2.206zm-1.725 14.758h3.474V9.345h-3.474v12.679zM119.248 22.303c2.662 0 4.691-1.116 5.883-2.84l-2.587-1.927c-.583.887-1.673 1.597-3.271 1.597-1.673 0-3.169-.938-3.372-2.637h9.483c.076-.533.051-.888.051-1.192 0-4.133-2.916-6.238-6.238-6.238-3.854 0-6.669 2.865-6.669 6.618 0 4.007 2.942 6.619 6.72 6.619zm-3.221-8.165c.33-1.547 1.775-2.207 3.069-2.207 1.293 0 2.561.685 2.865 2.207h-5.934zM138.45 22.024h3.449l4.184-12.679h-3.728l-2.383 8.114-2.587-8.114h-2.662l-2.561 8.114-2.409-8.114h-3.703l4.21 12.679h3.448l2.359-7.202 2.383 7.202z"
+                fill="currentColor"
+              ></path>
+            </svg>
+          </span>
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+        <h1 className="text-4xl font-bold">Trading View Charts Example</h1>
+        <div className="my-10 max-w-[700px] mx-auto border-8 border-white rounded shadow-2xl">
+          <ChartComponent {...props} data={initialData}></ChartComponent>
+        </div>
       </div>
     </main>
   );
